@@ -29,7 +29,9 @@ useStateは動的なデータを扱ってコンポーネントの中で状態管
 クラスコンポーネントの場合"this.変数"を通じて値の状態を管理。
 関数コンポーネントの場合useStatueを活用して管理できる。
 
-関数形
+関数形<br>
+<img width="757" alt="関数形" src="https://github.com/sunnyheee/react_basic/assets/84654346/9acaa033-5cf2-41aa-ae05-b70a7af1e576">
 
 
-クラス形
+クラス形<br>
+<img width="747" alt="クラス形" src="https://github.com/sunnyheee/react_basic/assets/84654346/6eb480a4-c7d8-46e7-a54c-23c93faf0683">
