@@ -1,29 +1,29 @@
-function NumList(props) {
-    const numbers = props.numbers
-    // 振り返しのそれぞれの要素にkeyというユニークな値を付与しなければいけない
-    // Reactの内部処理においてリストのそれぞれの要素が変更・追加・削除された場合何か判別することが難しい
-    // なのでユニークな値を与える
-    
-    const listItems = numbers.map((num)=> (
+import React from "react";
 
-        <li key={num}>{num}</li>
-        ));
-    console.log("listItems",listItems)
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: "Hello",
+    };
+  }
 
-    return(
-        <ul>
-            {listItems}
-        </ul>
-    )
-}
+  handleChange = (e) => {
+    this.setState({ text: e.target.value });
+  };
 
-function App(){
-    const numbers = [1,2,3,4,5]
+  render() {
     return (
-        <div>
-            <NumList numbers={numbers}/ >
-        </div>
-    )
+      <>
+        <textarea
+          type="text"
+          vlaue={this.state.text}
+          onChange={this.handleChange}
+        />
+        <p>{this.state.text}</p>
+      </>
+    );
+  }
 }
 
 export default App;
