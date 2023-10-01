@@ -1,28 +1,26 @@
-function Dialog(props) {
-  return (
-    // props.childrenで長身を引き
-    <div>{props.children}</div>
-  );
-}
-
-function SplitPane(props) {
-  return (
-    <div>
-      <div>{props.left}</div>
-      <div>{props.right}</div>
-    </div>
-  );
-}
+import { useEffect, useState } from "react";
 
 function App() {
+  // hooksのuseStateを使う
+  const [date, setDate] = useState(new Date());
+
+  // useEffectを使うことで、レンダーあとに発生する何かしらの処理をここに収めておく
+  // useEffectの返り値として関数を返すことでアンマウントされた際に行う処理を追加することも可能
+  useEffect(() => {
+    const timerId = setInterval(() => {
+      setDate(new Date(), 1000);
+    });
+
+    return function cleanup() {
+      clearInterval(timerId);
+    };
+  }, []);
+
   return (
-    <>
-      <Dialog>
-        <h1>Welcome</h1>
-        <h2>It's sunny today</h2>
-      </Dialog>
-      <SplitPane left={<h1>left text</h1>} right={<h2>right text</h2>} />
-    </>
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {date.toLocaleTimeString()}</h2>
+    </div>
   );
 }
 
