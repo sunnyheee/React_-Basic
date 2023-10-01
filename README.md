@@ -30,48 +30,6 @@ useStateは動的なデータを扱ってコンポーネントの中で状態管
 関数コンポーネントの場合useStatueを活用して管理できる。
 
 関数形
-import React, { useState } from 'react';
 
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const incrementCounter = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <h1>Count: {count}</h1>
-      <button onClick={incrementCounter}>Increment</button>
-    </div>
-  );
-};
-
-export default Counter;
 
 クラス形
-import React, { Component } from 'react';
-
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: 0
-    };
-  }
-
-  incrementCounter = () => {
-    this.setState({ count: this.state.count + 1 });
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>Count: {this.state.count}</h1>
-        <button onClick={this.incrementCounter}>Increment</button>
-      </div>
-    );
-  }
-}
-
-export default Counter;
