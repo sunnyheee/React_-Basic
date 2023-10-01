@@ -1,26 +1,36 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import ListItem from "./ListItem";
 
-function App() {
-  // hooksのuseStateを使う
-  const [date, setDate] = useState(new Date());
+const shoppingList = [
+  { id: 1, name: "apple", price: "200" },
+  { id: 2, name: "banana", price: "100" },
+  { id: 3, name: "oronge", price: "300" },
+];
 
-  // useEffectを使うことで、レンダーあとに発生する何かしらの処理をここに収めておく
-  // useEffectの返り値として関数を返すことでアンマウントされた際に行う処理を追加することも可能
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      setDate(new Date(), 1000);
+function App(props) {
+  const [list, setList] = useState(shoppingList);
+  const remaingAmount = list.filter((item) => !item.isDone).length;
+
+  const handleClick = (id) => {
+    const FruitList = list.slice();
+    FruitList.forEach((item) => {
+      console.log(item);
+      if (item.id === id) {
+        item.isDone = !item.isDone;
+      }
     });
-
-    return function cleanup() {
-      clearInterval(timerId);
-    };
-  }, []);
-
+    setList(FruitList);
+  };
   return (
-    <div>
-      <h1>Hello, world!</h1>
-      <h2>It is {date.toLocaleTimeString()}</h2>
-    </div>
+    <>
+      <h1>Shopping List</h1>
+      <p>{remaingAmount}</p>
+      <ul>
+        {shoppingList.map((item) => (
+          <ListItem key={item.id} item={item} onClick={handleClick} />
+        ))}
+      </ul>
+    </>
   );
 }
 
