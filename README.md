@@ -40,5 +40,6 @@ useState は動的なデータを扱ってコンポーネントの中で状態�
 ## <a href="https://nextjs.org/">Next.js とは</a>
 
 full-stack React ベースのフレームワーク。
+pages 以下に React ベースの JS ファイスを配置するとそのディレクトリ名・ファイル名に対応したページを生成する
 
 - cons: フォルダベースの routing をしてくれるので、予約ファイルが多くなってプロジェクトが大きくなると複雑になる
